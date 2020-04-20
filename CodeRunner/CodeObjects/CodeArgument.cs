@@ -1,5 +1,4 @@
-﻿using System;
-using CSharp.CodeUtils.CodeContracts.CodeObjects;
+﻿using CSharp.CodeUtils.CodeContracts.CodeObjects;
 
 namespace CSharp.CodeUtils.CodeRunner.CodeObjects
 {

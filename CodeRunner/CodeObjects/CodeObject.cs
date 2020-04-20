@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using CSharp.CodeUtils.CodeContracts.CodeObjects;
 
@@ -8,7 +7,7 @@ namespace CSharp.CodeUtils.CodeRunner.CodeObjects
     public class CodeObject : ICodeObject
     {
         /// <inheritdoc />
-        public Stack<ICodeArgument> Args { get; private set; }
+        public Stack<ICodeArgument> Args { get; }
 
         /// <inheritdoc />
         public string SourceCode { get; set; }

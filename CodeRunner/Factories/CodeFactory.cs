@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using CSharp.CodeUtils.CodeContracts.CodeObjects;
 using CSharp.CodeUtils.CodeContracts.Factories;
 using CSharp.CodeUtils.CodeRunner.CodeObjects;
@@ -18,7 +16,7 @@ namespace CSharp.CodeUtils.CodeRunner.Factories
             return new CodeArgument()
             {
                 TypeName = nameof(Byte),
-                Name = "argByte",
+                Name = string.IsNullOrEmpty(name) ? "byteArg" : name,
                 Value = default(byte)
             };
         }
@@ -29,7 +27,7 @@ namespace CSharp.CodeUtils.CodeRunner.Factories
             return new CodeArgument()
             {
                 TypeName = nameof(Int16),
-                Name = "argInt16",
+                Name = string.IsNullOrEmpty(name) ? "int16Arg" : name,
                 Value = default(short)
             };
         }
@@ -40,7 +38,7 @@ namespace CSharp.CodeUtils.CodeRunner.Factories
             return new CodeArgument()
             {
                 TypeName = nameof(Int32),
-                Name = "argInt32",
+                Name = string.IsNullOrEmpty(name) ? "int32Arg" : name,
                 Value = default(int)
             };
         }
@@ -51,7 +49,7 @@ namespace CSharp.CodeUtils.CodeRunner.Factories
             return new CodeArgument()
             {
                 TypeName = nameof(Int64),
-                Name = "argInt64",
+                Name = string.IsNullOrEmpty(name) ? "int64Arg" : name,
                 Value = default(long)
             };
         }
@@ -62,7 +60,7 @@ namespace CSharp.CodeUtils.CodeRunner.Factories
             return new CodeArgument()
             {
                 TypeName = nameof(Single),
-                Name = "argFloat",
+                Name = string.IsNullOrEmpty(name) ? "argFloat" : name,
                 Value = default(float)
             };
         }
@@ -73,7 +71,7 @@ namespace CSharp.CodeUtils.CodeRunner.Factories
             return new CodeArgument()
             {
                 TypeName = nameof(Double),
-                Name = "argDouble",
+                Name = string.IsNullOrEmpty(name) ? "argDouble" : name,
                 Value = default(double)
             };
         }

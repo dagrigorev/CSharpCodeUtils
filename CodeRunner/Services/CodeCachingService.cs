@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using CSharp.CodeUtils.CodeContracts.CodeObjects;
 using CSharp.CodeUtils.CodeContracts.Services;
@@ -11,7 +10,7 @@ namespace CSharp.CodeUtils.CodeRunner.Services
     /// </summary>
     public class CodeCachingService : ICachingService<string, ICodeObject>
     {
-        private IDictionary<string, ICodeObject> _cache;
+        private readonly IDictionary<string, ICodeObject> _cache;
 
         /// <summary>
         /// Default constructor

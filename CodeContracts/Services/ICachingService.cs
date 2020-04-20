@@ -1,13 +1,11 @@
-﻿using System;
-
-namespace CSharp.CodeUtils.CodeContracts.Services
+﻿namespace CSharp.CodeUtils.CodeContracts.Services
 {
     /// <summary>
     /// Caching service contract
     /// </summary>
     /// <typeparam name="TKey">Key type</typeparam>
     /// <typeparam name="TValue">Value type</typeparam>
-    public interface ICachingService<TKey, TValue>
+    public interface ICachingService<in TKey, TValue>
     {
         /// <summary>
         /// Caches item. If item already in cache it'll be updated
