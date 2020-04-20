@@ -10,7 +10,7 @@ namespace CSharp.CodeUtils.CodeContracts.CodeObjects
         /// <summary>
         /// Arguments list
         /// </summary>
-        Stack<ICodeArgument> Args { get; set; }
+        Stack<ICodeArgument> Args { get; }
 
         /// <summary>
         /// Source code
@@ -21,5 +21,35 @@ namespace CSharp.CodeUtils.CodeContracts.CodeObjects
         /// Return type name
         /// </summary>
         string ReturnType { get; set; }
+
+        /// <summary>
+        /// Adds new argument
+        /// </summary>
+        /// <param name="arg"></param>
+        void AddArgument(ICodeArgument arg);
+
+        /// <summary>
+        /// Removes argument
+        /// </summary>
+        /// <param name="arg"></param>
+        void RemoveArgument(ICodeArgument arg);
+
+        /// <summary>
+        /// Adds new argument
+        /// </summary>
+        /// <param name="typeName">Argument type</param>
+        /// <param name="name">Argument name</param>
+        void AddArgument(string typeName, string name);
+
+        /// <summary>
+        /// Removes argument by name
+        /// </summary>
+        /// <param name="name">Argument name</param>
+        void RemoveArgument(string name);
+
+        /// <summary>
+        /// Remove all args
+        /// </summary>
+        void ClearArgs();
     }
 }

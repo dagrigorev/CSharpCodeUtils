@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CSharp.CodeUtils.CodeContracts.CodeObjects;
+using CSharp.CodeUtils.CodeContracts.Services;
 
 namespace CSharp.CodeUtils.CodeContracts
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using System;
 
-namespace CSharp.CodeUtils.CodeContracts
+namespace CSharp.CodeUtils.CodeContracts.Services
 {
     /// <summary>
     /// C# compiler service contract
