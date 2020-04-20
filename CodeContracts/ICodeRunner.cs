@@ -1,4 +1,6 @@
-﻿namespace CSharp.CodeUtils.CodeContracts
+﻿using CSharp.CodeUtils.CodeContracts.CodeObjects;
+
+namespace CSharp.CodeUtils.CodeContracts
 {
     /// <summary>
     /// Code runner contract
@@ -12,5 +14,12 @@
         /// <param name="args">Code arguments</param>
         /// <returns>Execution result</returns>
         object Run(string name, params object[] args);
+
+        /// <summary>
+        /// Runs source code that implemented by <see cref="ICodeObject"/>
+        /// </summary>
+        /// <param name="codeObject">Runnable code object</param>
+        /// <returns>Running result</returns>
+        object Run(ICodeObject codeObject);
     }
 }

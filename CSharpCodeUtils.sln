@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeContracts", "CodeContra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp.CodeRunner", "CodeRunner\CSharp.CodeRunner.csproj", "{36501E55-17AD-426B-8FFB-62523D08019F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeRunnerTests", "CodeRunnerTests\CodeRunnerTests.csproj", "{ABD9FEA2-B798-4CDB-8343-C6D86E560B85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpCodeRunnerTests", "CodeRunnerTests\CSharpCodeRunnerTests.csproj", "{ABD9FEA2-B798-4CDB-8343-C6D86E560B85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

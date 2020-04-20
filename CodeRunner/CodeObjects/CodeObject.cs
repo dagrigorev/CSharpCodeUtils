@@ -6,6 +6,11 @@ namespace CSharp.CodeUtils.CodeRunner.CodeObjects
 {
     public class CodeObject : ICodeObject
     {
+        private int _argCounter;
+
+        /// <inheritdoc />
+        public string Name { get; set; }
+
         /// <inheritdoc />
         public Stack<ICodeArgument> Args { get; }
 
@@ -18,6 +23,7 @@ namespace CSharp.CodeUtils.CodeRunner.CodeObjects
         public CodeObject(Stack<ICodeArgument> args)
         {
             Args = args;
+            _argCounter = 0;
         }
 
         /// <summary>
@@ -26,6 +32,7 @@ namespace CSharp.CodeUtils.CodeRunner.CodeObjects
         public CodeObject()
         {
             Args = new Stack<ICodeArgument>();
+            _argCounter = 0;
         }
 
         /// <inheritdoc />
@@ -55,10 +62,24 @@ namespace CSharp.CodeUtils.CodeRunner.CodeObjects
         }
 
         /// <inheritdoc />
+        public void AddArgument<T>()
+        {
+            AddArgument(new CodeArgument()
+            {
+                TypeName = typeof(T).Name,
+                Name = $"arg{_argCounter}",
+                Value = default(T)
+            });
+            _argCounter++;
+        }
+
+        /// <inheritdoc />
         public void ClearArgs()
         {
             if(Args.Count > 0)
                 Args.Clear();
+
+            _argCounter = 0;
         }
     }
 }

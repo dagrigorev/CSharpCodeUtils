@@ -23,5 +23,12 @@ namespace CSharp.CodeUtils.CodeContracts
         /// Initializes code manager
         /// </summary>
         void Initialize();
+
+        /// <summary>
+        /// Checks <see cref="ICodeObject"/> for validity
+        /// </summary>
+        /// <param name="codeObject">Code object</param>
+        /// <returns>True - if object is valid, False - otherwise</returns>
+        bool IsValid(ICodeObject codeObject);
     }
 }

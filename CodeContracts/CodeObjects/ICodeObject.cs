@@ -8,6 +8,11 @@ namespace CSharp.CodeUtils.CodeContracts.CodeObjects
     public interface ICodeObject
     {
         /// <summary>
+        /// Code object name
+        /// </summary>
+        string Name { get; set; }
+
+        /// <summary>
         /// Arguments list
         /// </summary>
         Stack<ICodeArgument> Args { get; }
@@ -27,6 +32,12 @@ namespace CSharp.CodeUtils.CodeContracts.CodeObjects
         /// </summary>
         /// <param name="arg"></param>
         void AddArgument(ICodeArgument arg);
+
+        /// <summary>
+        /// Adds new argument
+        /// </summary>
+        /// <typeparam name="T">Argument type</typeparam>
+        void AddArgument<T>();
 
         /// <summary>
         /// Adds new argument

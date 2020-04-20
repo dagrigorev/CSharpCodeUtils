@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using CSharp.CodeUtils.CodeContracts.CodeObjects;
+using Microsoft.CodeAnalysis;
 
 namespace CSharp.CodeUtils.CodeContracts.Services
 {
@@ -7,6 +8,11 @@ namespace CSharp.CodeUtils.CodeContracts.Services
     /// </summary>
     public interface ICompilerService
     {
+        /// <summary>
+        /// Source code generator
+        /// </summary>
+        ISourceCodeGenerator CodeGenerator { get; set; }
+
         /// <summary>
         /// Parses source code string and generates <see cref="SyntaxTree"/>
         /// </summary>
@@ -22,5 +28,18 @@ namespace CSharp.CodeUtils.CodeContracts.Services
         /// <param name="enableOptimization">Enables optimization </param>
         /// <returns>New <see cref="Compilation"/> instance</returns>
         Compilation CreateCompiler(string assemblyName, bool enableOptimization);
+
+        /// <summary>
+        /// Checks source code string for validity
+        /// </summary>
+        /// <returns>True - if string is correct, False - otherwise</returns>
+        bool IsSourceCodeValid(string srcCode);
+
+        /// <summary>
+        /// Compiles <see cref="ICodeObject"/>
+        /// </summary>
+        /// <param name="sourceCodeObject"><see cref="ICodeObject"/> instance</param>
+        /// <returns>True - if compilation was successful, False - otherwise</returns>
+        bool Compile(ICodeObject sourceCodeObject);
     }
 }

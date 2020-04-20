@@ -48,5 +48,38 @@ namespace CSharp.CodeUtils.CodeContracts.Factories
         /// <param name="name">Argument name</param>
         /// <returns>Double argument</returns>
         ICodeArgument CreateDoubleArgument(string name);
+
+        /// <summary>
+        /// Creates new code object
+        /// </summary>
+        /// <typeparam name="T">Return type</typeparam>
+        /// <param name="name">Code object name</param>
+        /// <returns><see cref="ICodeObject"/> instance</returns>
+        ICodeObject CreateCodeObject<T>(string name);
+
+        /// <summary>
+        /// Create code object that implements  arithmetical sum operation
+        /// </summary>
+        /// <returns><see cref="ICodeObject"/> instance</returns>
+        ICodeObject CreateArithmeticalSumCodeObject();
+
+        /// <summary>
+        /// Create code object that implements arithmetical subtraction operation
+        /// </summary>
+        /// <returns><see cref="ICodeObject"/> instance</returns>
+        ICodeObject CreateArithmeticalSubCodeObject();
+
+        /// <summary>
+        /// Create code object that implements arithmetical multiplication operation
+        /// </summary>
+        /// <returns><see cref="ICodeObject"/> instance</returns>
+        ICodeObject CreateArithmeticalMulCodeObject();
+
+        /// <summary>
+        /// Create code object that implements arithmetical divide operation
+        /// </summary>
+        /// <returns><see cref="ICodeObject"/> instance</returns>
+        ICodeObject CreateArithmeticalDivCodeObject();
+
     }
 }

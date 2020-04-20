@@ -16,6 +16,9 @@ namespace CSharp.CodeUtils.CodeRunner.CodeObjects
         /// <inheritdoc />
         public object Value { get; set; }
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public CodeArgument()
         {
             Name = string.Empty;
