@@ -1,5 +1,0 @@
-C:\Users\dm-gr\source\repos\CSharpCodeUtils\CodeContracts\bin\Debug\netcoreapp3.1\CodeContracts.deps.json
-C:\Users\dm-gr\source\repos\CSharpCodeUtils\CodeContracts\bin\Debug\netcoreapp3.1\CodeContracts.dll
-C:\Users\dm-gr\source\repos\CSharpCodeUtils\CodeContracts\obj\Debug\netcoreapp3.1\CodeContracts.csprojAssemblyReference.cache
-C:\Users\dm-gr\source\repos\CSharpCodeUtils\CodeContracts\obj\Debug\netcoreapp3.1\CodeContracts.AssemblyInfoInputs.cache
-C:\Users\dm-gr\source\repos\CSharpCodeUtils\CodeContracts\obj\Debug\netcoreapp3.1\CodeContracts.AssemblyInfo.cs
