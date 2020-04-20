@@ -1,4 +1,5 @@
-﻿using CSharp.CodeUtils.CodeContracts.CodeObjects;
+﻿using System.IO;
+using CSharp.CodeUtils.CodeContracts.CodeObjects;
 using Microsoft.CodeAnalysis;
 
 namespace CSharp.CodeUtils.CodeContracts.Services
@@ -8,6 +9,11 @@ namespace CSharp.CodeUtils.CodeContracts.Services
     /// </summary>
     public interface ICompilerService
     {
+        /// <summary>
+        /// Building stream
+        /// </summary>
+        Stream BuildStream { get; set; }
+
         /// <summary>
         /// Source code generator
         /// </summary>

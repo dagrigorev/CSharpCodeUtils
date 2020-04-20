@@ -34,6 +34,9 @@ namespace CSharp.CodeUtils.CodeRunner.Services
         };
 
         /// <inheritdoc />
+        public Stream BuildStream { get; set; }
+
+        /// <inheritdoc />
         public ISourceCodeGenerator CodeGenerator { get; set; }
 
         /// <inheritdoc />
@@ -83,6 +86,7 @@ namespace CSharp.CodeUtils.CodeRunner.Services
         /// <inheritdoc />
         public bool IsSourceCodeValid(string srcCode)
         {
+            BuildStream = new MemoryStream();
             return Compile("checkableSrc", srcCode, new MemoryStream()).Success;
         }
 
@@ -90,8 +94,9 @@ namespace CSharp.CodeUtils.CodeRunner.Services
         public bool Compile(ICodeObject sourceCodeObject)
         {
             if (sourceCodeObject.IsEmpty()) throw new InvalidOperationException("CodeObject cannot be empty");
+            BuildStream = new MemoryStream();
 
-            return Compile(sourceCodeObject.Name, CodeGenerator.Generate(sourceCodeObject), new MemoryStream()).Success;
+            return Compile(sourceCodeObject.Name, CodeGenerator.Generate(sourceCodeObject), BuildStream as MemoryStream).Success;
         }
     }
 }

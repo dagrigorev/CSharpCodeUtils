@@ -55,5 +55,7 @@ namespace CSharp.CodeUtils.CodeContracts.CodeObjects
         /// Remove all args
         /// </summary>
         void ClearArgs();
+
+
     }
 }

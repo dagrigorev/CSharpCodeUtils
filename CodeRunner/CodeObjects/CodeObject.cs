@@ -4,10 +4,11 @@ using CSharp.CodeUtils.CodeContracts.CodeObjects;
 
 namespace CSharp.CodeUtils.CodeRunner.CodeObjects
 {
-    public class CodeObject : ICodeObject
+    public class CodeObject : ICodeObject, IExtendableCode
     {
         private int _argCounter;
-
+        private ISet<ICodeObject> _extensions;
+        
         /// <inheritdoc />
         public string Name { get; set; }
 
@@ -20,10 +21,14 @@ namespace CSharp.CodeUtils.CodeRunner.CodeObjects
         /// <inheritdoc />
         public string ReturnType { get; set; }
 
+        /// <inheritdoc />
+        public ICodeObject[] Extensions => _extensions.ToArray();
+
         public CodeObject(Stack<ICodeArgument> args)
         {
             Args = args;
             _argCounter = 0;
+            _extensions = new HashSet<ICodeObject>();
         }
 
         /// <summary>
@@ -33,6 +38,7 @@ namespace CSharp.CodeUtils.CodeRunner.CodeObjects
         {
             Args = new Stack<ICodeArgument>();
             _argCounter = 0;
+            _extensions = new HashSet<ICodeObject>();
         }
 
         /// <inheritdoc />
@@ -66,7 +72,7 @@ namespace CSharp.CodeUtils.CodeRunner.CodeObjects
         {
             AddArgument(new CodeArgument()
             {
-                TypeName = typeof(T).Name,
+                TypeName = typeof(T).FullName,
                 Name = $"arg{_argCounter}",
                 Value = default(T)
             });
@@ -80,6 +86,20 @@ namespace CSharp.CodeUtils.CodeRunner.CodeObjects
                 Args.Clear();
 
             _argCounter = 0;
+        }
+
+        /// <inheritdoc />
+        public void AddExtension(ICodeObject codeObject)
+        {
+            if (!_extensions.Contains(codeObject))
+                _extensions.Add(codeObject);
+        }
+
+        /// <inheritdoc />
+        public void RemoveExtension(ICodeObject removeObject)
+        {
+            if (_extensions.Contains(removeObject))
+                _extensions.Remove(removeObject);
         }
     }
 }

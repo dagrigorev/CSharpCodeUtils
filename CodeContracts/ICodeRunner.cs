@@ -20,6 +20,6 @@ namespace CSharp.CodeUtils.CodeContracts
         /// </summary>
         /// <param name="codeObject">Runnable code object</param>
         /// <returns>Running result</returns>
-        object Run(ICodeObject codeObject);
+        object Run(ICodeObject codeObject, params object[] args);
     }
 }

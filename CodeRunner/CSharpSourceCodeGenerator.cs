@@ -12,8 +12,18 @@ namespace CSharp.CodeUtils.CodeRunner
 
         public CSharpSourceCodeGenerator()
         {
-            Usings = new HashSet<string> {"System", "System.Linq", "System.Collections.Generic" };
+            Usings = new HashSet<string> { "System", "System.Linq", "System.Collections.Generic" };
 
+        }
+
+        private string GenerateMetodDeclaration(ICodeObject codeObject)
+        {
+            var sourceCodeBuilder = new StringBuilder();
+            sourceCodeBuilder.AppendLine(
+                $"public {codeObject.ReturnType} {codeObject.Name}({GetStringFromArgs(codeObject.Args.ToArray())}){{");
+            sourceCodeBuilder.Append(codeObject.SourceCode);
+            sourceCodeBuilder.AppendLine("}");
+            return sourceCodeBuilder.ToString();
         }
 
         /// <inheritdoc />
@@ -21,11 +31,13 @@ namespace CSharp.CodeUtils.CodeRunner
         {
             var sourceCodeBuilder = new StringBuilder(GetUsings());
             sourceCodeBuilder.AppendLine($"namespace {codeObject.Name}Namespace{{");
+
             sourceCodeBuilder.AppendLine($"public class {codeObject.Name}Block{{");
-            sourceCodeBuilder.AppendLine(
-                $"public {codeObject.ReturnType} {codeObject.Name}({GetStringFromArgs(codeObject.Args.ToArray())}){{");
-            sourceCodeBuilder.Append(codeObject.SourceCode);
-            sourceCodeBuilder.AppendLine("}");
+            if (codeObject is IExtendableCode extCode)
+                foreach (var ext in extCode.Extensions)
+                    sourceCodeBuilder.AppendLine(GenerateMetodDeclaration(ext));
+
+            sourceCodeBuilder.AppendLine(GenerateMetodDeclaration(codeObject));
             sourceCodeBuilder.AppendLine("}");
             sourceCodeBuilder.AppendLine("}");
 
