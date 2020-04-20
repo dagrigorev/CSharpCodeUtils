@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using CSharp.CodeUtils.CodeContracts.CodeObjects;
 
 namespace CSharp.CodeUtils.CodeRunner.CodeObjects
@@ -19,6 +21,9 @@ namespace CSharp.CodeUtils.CodeRunner.CodeObjects
             Args = args;
         }
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public CodeObject()
         {
             Args = new Stack<ICodeArgument>();
@@ -27,31 +32,34 @@ namespace CSharp.CodeUtils.CodeRunner.CodeObjects
         /// <inheritdoc />
         public void AddArgument(ICodeArgument arg)
         {
-            throw new System.NotImplementedException();
+            //arg.Name += $"_{Args.Count}";
+            if(!Args.Contains(arg))
+                Args.Push(arg);
         }
 
         /// <inheritdoc />
-        public void RemoveArgument(ICodeArgument arg)
+        public void RemoveArgument()
         {
-            throw new System.NotImplementedException();
+            if (Args.Count > 0)
+                Args.Pop();
         }
 
         /// <inheritdoc />
         public void AddArgument(string typeName, string name)
         {
-            throw new System.NotImplementedException();
-        }
-
-        /// <inheritdoc />
-        public void RemoveArgument(string name)
-        {
-            throw new System.NotImplementedException();
+            if(!Args.Any(arg => arg.Name.Equals(name)))
+                Args.Push(new CodeArgument()
+                {
+                    TypeName = typeName,
+                    Name = name
+                });
         }
 
         /// <inheritdoc />
         public void ClearArgs()
         {
-            throw new System.NotImplementedException();
+            if(Args.Count > 0)
+                Args.Clear();
         }
     }
 }

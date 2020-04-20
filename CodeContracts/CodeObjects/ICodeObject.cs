@@ -29,12 +29,6 @@ namespace CSharp.CodeUtils.CodeContracts.CodeObjects
         void AddArgument(ICodeArgument arg);
 
         /// <summary>
-        /// Removes argument
-        /// </summary>
-        /// <param name="arg"></param>
-        void RemoveArgument(ICodeArgument arg);
-
-        /// <summary>
         /// Adds new argument
         /// </summary>
         /// <param name="typeName">Argument type</param>
@@ -42,10 +36,9 @@ namespace CSharp.CodeUtils.CodeContracts.CodeObjects
         void AddArgument(string typeName, string name);
 
         /// <summary>
-        /// Removes argument by name
+        /// Removes last argument (from top of the stack)
         /// </summary>
-        /// <param name="name">Argument name</param>
-        void RemoveArgument(string name);
+        void RemoveArgument();
 
         /// <summary>
         /// Remove all args

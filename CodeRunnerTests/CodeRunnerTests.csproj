@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CodeContracts\CodeContracts.csproj" />
-    <ProjectReference Include="..\CodeRunner\CodeRunner.csproj" />
+    <ProjectReference Include="..\CodeRunner\CSharp.CodeRunner.csproj" />
   </ItemGroup>
 
 </Project>
