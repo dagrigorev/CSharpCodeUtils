@@ -1,4 +1,5 @@
 ﻿using System;
+using CSharp.CodeUtils.CodeContracts.CodeObjects;
 using CSharp.CodeUtils.CodeContracts.Factories;
 using CSharp.CodeUtils.CodeContracts.Services;
 using CSharp.CodeUtils.CodeRunner.CodeObjects;
@@ -84,7 +85,11 @@ namespace CSharp.CodeUtils.CodeRunner.Tests
         [Test]
         public void TestBuildExternalTypeIncludingSourceCode()
         {
-            throw new NotImplementedException();
+            var sumCode = _factory.CreateArithmeticalSumCodeObject();
+            if(sumCode is IExtendableCode ext)
+                ext.AddExtension(_factory.CreateArithmeticalMulCodeObject());
+
+            Assert.IsTrue(_compiler.Compile(sumCode));
         }
 
         [Test]

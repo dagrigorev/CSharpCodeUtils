@@ -1,4 +1,6 @@
 ﻿using System;
+using CSharp.CodeUtils.CodeRunner.CodeObjects;
+using CSharp.CodeUtils.CodeRunner.Factories;
 using NUnit.Framework;
 
 namespace CSharp.CodeUtils.CodeRunner.Tests.IntegrationalTests
@@ -12,37 +14,83 @@ namespace CSharp.CodeUtils.CodeRunner.Tests.IntegrationalTests
         [Test]
         public void TestInitializeAndBuildEmpty()
         {
-            throw new NotImplementedException();
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                var codeManager = new CSharpCodeManager();
+                codeManager.Initialize();
+                codeManager.CompilationService.Compile(new CodeObject());
+            });
         }
 
         [Test]
         public void TestInitializeBuildInvalid()
         {
-            throw new NotImplementedException();
+            var codeManager = new CSharpCodeManager();
+            codeManager.Initialize();
+
+            Assert.IsNotNull(codeManager.CompilationService);
+
+            Assert.IsFalse(codeManager.CompilationService.Compile(new CodeObject()
+            {
+                Name="InvalidSample",
+                ReturnType = "123123",
+                SourceCode = "aksjdbnslaidufhbpasidfq;l2p[239"
+            }));
         }
 
         [Test]
         public void TestInitializeBuildAndRunDefault()
         {
-            throw new NotImplementedException();
+            var codeManager = new CSharpCodeManager();
+            codeManager.Initialize();
+
+            Assert.IsNotNull(codeManager.CompilationService);
+
+            Assert.Throws<InvalidOperationException>(() => codeManager.Run(new CodeObject()));
         }
 
         [Test]
         public void TestInitializeBuildAndRunInvalid()
         {
-            throw new NotImplementedException();
+            var codeManager = new CSharpCodeManager();
+            codeManager.Initialize();
+
+            Assert.IsNotNull(codeManager.CompilationService);
+
+            Assert.IsNull(codeManager.Run(new CodeObject()
+            {
+                Name = "InvalidSample",
+                ReturnType = "123123",
+                SourceCode = "aksjdbnslaidufhbpasidfq;l2p[239"
+            }));
         }
 
         [Test]
         public void TestInitializeBuildAndRunArithmetical()
         {
-            throw new NotImplementedException();
+            var codeManager = new CSharpCodeManager();
+            var factory = new CodeFactory();
+
+            codeManager.Initialize();
+
+            Assert.IsNotNull(codeManager.CompilationService);
+
+            Assert.AreEqual(codeManager.Run(factory.CreateArithmeticalSumCodeObject(), 10, 15), 25);
         }
 
         [Test]
         public void TestInitializeBuildAndRunSequence()
         {
-            throw new NotImplementedException();
+            var codeManager = new CSharpCodeManager();
+            var factory = new CodeFactory();
+
+            codeManager.Initialize();
+
+            Assert.IsNotNull(codeManager.CompilationService);
+
+            Assert.AreEqual(codeManager.Run(factory.CreateArithmeticalSumCodeObject(), 10, 15), 25);
+            Assert.AreEqual(codeManager.Run(factory.CreateArithmeticalSubCodeObject(), 15, 10), 5);
+            Assert.AreEqual(codeManager.Run(factory.CreateArithmeticalMulCodeObject(), 10, 15), 150);
         }
     }
 }
